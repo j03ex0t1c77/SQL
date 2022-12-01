@@ -1,0 +1,19 @@
+CREATE TABLE Walmart (id INTEGER PRIMARY KEY, name TEXT, aisle TEXT, price INTEGER, quantity INTEGER );
+INSERT INTO Walmart VALUES (1, "TV", 2,  59, 45);
+INSERT INTO Walmart VALUES (2, "Games", 2,  100, 45);
+INSERT INTO Walmart VALUES (3, "Microwave", 2,  0, 10);
+INSERT INTO Walmart VALUES (4, "Chips", 5,  3, 1000);
+INSERT INTO Walmart VALUES (5, "Consoles", 2,  0, 45);
+INSERT INTO Walmart VALUES (6, "Headset", 2,  5, 300);
+INSERT INTO Walmart VALUES (7, "Figures", 10,  1000, 5);
+INSERT INTO Walmart VALUES (8, "Statues", 11,  0, 455);
+INSERT INTO Walmart VALUES (9, "Bikes", 5,  60, 35);
+INSERT INTO Walmart VALUES (10," Clothes", 5,  10000, 15);
+INSERT INTO Walmart VALUES (11, "Fruits", 5,  200, 5);
+INSERT INTO Walmart VALUES (12, "Cereal", 5,  0, 5);
+INSERT INTO Walmart VALUES (13, "Pens", 1,  100, 1);
+INSERT INTO Walmart VALUES (14, "Pokemon Cards", 1,  10000, 4500);
+INSERT INTO Walmart VALUES (15, "Sports Cards", 1,  0, 45);
+
+SELECT aisle, TOTAL(price) FROM Walmart GROUP BY aisle;
+SELECT * FROM Walmart;
