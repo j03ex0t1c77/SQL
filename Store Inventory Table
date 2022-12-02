@@ -26,5 +26,7 @@ SELECT * FROM Walmart;
 
 
 --display the database inventory by quantity and which aisle its located in. 
-SELECT ailse FROM Walmart
+SELECT aisle FROM Walmart
 GROUP BY aisle;
+
+
