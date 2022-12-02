@@ -11,9 +11,11 @@ INSERT INTO Walmart VALUES (9, "Bikes", 5,  60, 35);
 INSERT INTO Walmart VALUES (10," Clothes", 5,  10000, 15);
 INSERT INTO Walmart VALUES (11, "Fruits", 5,  200, 5);
 INSERT INTO Walmart VALUES (12, "Cereal", 5,  0, 5);
-INSERT INTO Walmart VALUES (13, "Pens", 1,  100, 1);
+INSERT INTO Walmart VALUES (13, "Pens", 1,  100, 50000);
 INSERT INTO Walmart VALUES (14, "Pokemon Cards", 1,  10000, 4500);
 INSERT INTO Walmart VALUES (15, "Sports Cards", 1,  0, 45);
 
-SELECT aisle, TOTAL(price) FROM Walmart GROUP BY aisle;
+SELECT aisle, TOTAL(quantity) FROM Walmart GROUP BY aisle;
+
+
 SELECT * FROM Walmart;
