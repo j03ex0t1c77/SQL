@@ -1,3 +1,6 @@
+--Creating my own store with various merchandise to purchase. 
+
+
 CREATE TABLE Walmart (id INTEGER PRIMARY KEY, name TEXT, aisle TEXT, price INTEGER, quantity INTEGER );
 INSERT INTO Walmart VALUES (1, "TV", 2,  59, 45);
 INSERT INTO Walmart VALUES (2, "Games", 2,  100, 45);
@@ -19,3 +22,9 @@ SELECT aisle, TOTAL(quantity) FROM Walmart GROUP BY aisle;
 
 
 SELECT * FROM Walmart;
+
+
+
+--display the database inventory by quantity and which aisle its located in. 
+SELECT ailse FROM Walmart
+GROUP BY aisle;
