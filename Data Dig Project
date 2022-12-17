@@ -64,7 +64,7 @@ SELECT name,
     FROM pokemon
     GROUP BY number;
     
-/* Query is to show the average total stast of the Pokemon Data*/
+/* Query is to show the average total-stats of a Pokemon's type*/
 
 SELECT type_1, avg(total) AS avg_total_stats
 FROM pokemon 
