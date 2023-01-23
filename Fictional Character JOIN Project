@@ -1,0 +1,119 @@
+/* Create table about the people and what they do here */
+
+CREATE Table fictional_characters (id INTEGER PRIMARY KEY, name TEXT, origin TEXT, popularity TEXT);
+
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("batman", "book", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("spiderman", "book", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("kamen_rider", "tv", "domestic");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("ultraman", "tv", "domestic");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("yoda", "movies", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("spongebob", "tv", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("robocop", "movies", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("terminator", "tv", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("rambo", "movies", "domestic");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("masterchief", "games", "domestic");  
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("megaman", "games", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("gundam", "TV", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("pacman", "games", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("super_mario", "games", "international");
+INSERT INTO fictional_characters(name, origin,popularity)
+    VALUES ("kirby", "games", "international");
+    
+SELECT * FROM fictional_characters;
+
+
+
+/* Table about which fictional character appearing in media types */
+
+CREATE Table media (id INTEGER PRIMARY KEY, name TEXT, TV TEXT, Movies TEXT, Books TEXT);
+
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("batman", "yes", "yes", "yes");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("spiderman", "yes", "yes", "yes");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("kamen_rider", "yes", "yes", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("ultraman", "yes", "yes", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("yoda", "yes", "yes", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("spongebob", "yes", "yes", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("robocop", "yes", "yes", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("terminator", "yes", "no", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("rambo", "yes", "no", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("masterhchief", "yes", "yes", "yes");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("megaman", "yes", "no", "no");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("gundam", "yes", "yes", "yes");
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("pacman", "no", "yes", "no"); 
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("super_mario", "yes", "yes", "no");    
+INSERT INTO media (name, tv, movies, books)
+    VALUES ("kirby", "no", "no", "no");
+    
+SELECT * FROM media;
+
+
+
+/* Table about which fictional character that don't appear in books */
+
+SELECT F.name, M.books 
+FROM fictional_characters AS F
+LEFT JOIN media AS M
+ON F.id = M.id
+WHERE "books" = "no";
+
+
+
+
+ /* Table about which fictional character that are popular internationality and both in TV media */
+    
+SELECT F.name,F.popularity, M.TV
+FROM fictional_characters AS F
+LEFT JOIN media AS M
+ON F.id = M.id
+WHERE "popularity" = "international" AND "TV" = "yes";
+
+
+
+/* Table about which fictional character where their origins are from games and are in TV media */
+
+SELECT F.name, F. origin, M.TV
+FROM fictional_characters AS F
+LEFT JOIN media AS M
+ON F.id = M.id
+WHERE "origin" = "games" AND "TV" = "yes";
+
+
+/* Table about which fictional character that appears in every type of media */
+
+SELECT F.name, M.TV, M.Movies, M.Books
+FROM fictional_characters AS F
+LEFT JOIN media AS M
+ON F.id = M.id
+WHERE "TV" = "yes" AND "Movies" = "yes" AND "books" = "yes";
+
+
+
+
