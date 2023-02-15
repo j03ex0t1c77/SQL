@@ -1,0 +1,90 @@
+/* Show Customers (their full names, customer ID, and country) who are not in the US. */
+
+SELECT customers.customerID, customers.Firstname, customers.Lastname, customers.Country
+FROM chinook.customers AS customers
+WHERE country <> 'USA';
+
+
+/* Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country */
+
+SELECT customers.Firstname, 
+        customers.Lastname, 
+        invoices.InvoiceId, 
+        invoices.InvoiceDate, 
+        invoices.BillingCountry
+FROM chinook.customers AS customers
+JOIN invoices as invoices
+ON customers.CustomerId = invoices.CustomerId
+WHERE BillingCountry = 'Brazil';
+
+
+/* Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name. */
+
+SELECT employ.FirstName, employ.LastName, inv.invoiceID
+FROM chinook.employees AS employ
+JOIN chinook.customers AS cust
+ON employ.employeeID = cust.SupportRepID
+JOIN chinook.invoices AS Inv 
+ON Inv.CustomerId = cust.CustomerId;
+
+
+/* Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers. */
+
+SELECT employ.FirstName, employ.LastName, inv.invoiceID, cust.FirstName, cust.Lastname, cust.Country, inv.total
+FROM chinook.employees AS employ
+JOIN chinook.customers AS cust
+ON employ.employeeID = cust.SupportRepID
+JOIN chinook.invoices AS Inv 
+ON Inv.CustomerId = cust.CustomerId;
+
+
+/* Write a query that includes the purchased track name with each invoice line ID. */
+
+SELECT trac.name, line.invoicelineID
+FROM chinook.tracks AS trac
+JOIN chinook.invoice_items AS line
+ON trac.trackID = line.trackid;
+
+
+/* Write a query that includes the purchased track name AND artist name with each invoice line ID */
+
+SELECT art.name AS Artist, trac.name AS Track, inv.invoiceLineId
+FROM chinook.tracks AS trac
+LEFT JOIN chinook.invoice_items AS inv
+ON trac.trackid = inv.trackid
+
+INNER JOIN chinook.albums AS alb
+ON alb.AlbumId = trac.AlbumId
+
+LEFT JOIN chinook.artists AS art
+ON art.artistID = alb.ArtistID;
+
+
+
+/* Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre. */
+
+SELECT A.title AS Album, T.name AS Song, G.Name AS Genre, M.Name AS Media
+FROM chinook.tracks AS T
+
+JOIN chinook.albums AS A
+ON T.albumID = A.albumiD
+
+JOIN chinook.genres as G
+ON T.GenreID = G.GenreID
+
+JOIN chinook.media_types AS M
+ON T.MediaTypeID = M.MediatypeID;
+
+
+/* Describe the following media type for difficulty in accessing the track file */
+
+SELECT T.name AS Song, M.Name,
+    CASE
+        WHEN M.Name = 'MPEG audio file' THEN 'Easy'
+        WHEN M.Name = 'Protected AAC audio file' THEN 'Medium'
+        WHEN M.Name = 'Protected MPEG-4 video file' THEN 'Hard'
+        ELSE 'Unknown'
+    END AS 'Difficulty'
+FROM chinook.tracks AS T 
+JOIN chinook.media_types AS M
+ON T.MediaTypeID = M.MediatypeID;
