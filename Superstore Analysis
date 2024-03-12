@@ -1,3 +1,5 @@
+An introductory project about running a big box store such as WalMart, Target and Costco.
+
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
     item_name TEXT,
@@ -25,11 +27,13 @@ VALUES
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
-*/ List every single item, category and price and sort them by highest price */
+
+/* List every single item, category and price and sort them by highest price. */
 
 SELECT item_name, category, price
 FROM superstore
 ORDER BY price desc;
+
 
 /* How many robot vacuum cleaners are in stock and how much are they? */
 
@@ -45,11 +49,13 @@ FROM superstore
 WHERE category = "Furnishings"
 ORDER BY price;
 
+
 /* What’s the average price of all the electronics items? */
 
 SELECT AVG (price)
 FROM superstore
 WHERE category = "Electronics";
+
 
 /* What is the highest average item by item? */
 
